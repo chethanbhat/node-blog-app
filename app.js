@@ -1,30 +1,30 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var stylus = require('stylus');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const stylus = require('stylus');
 const compression = require('compression');
 const helmet = require('helmet');
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+const index = require('./routes/index');
+const users = require('./routes/users');
 const blog = require('./routes/blog');
 
-var app = express();
+const app = express();
 
 app.use(compression()); // Compress all routes
 app.use(helmet());
 
 //Set up mongoose connection
-var mongoose = require('mongoose');
-var mongoDB = process.env.MONGODB_URI || 'mongodb://chethan:poke123@ds251807.mlab.com:51807/chethan-blog-dev';
+const mongoose = require('mongoose');
+const mongoDB = process.env.MONGODB_URI || 'mongodb://localhost:27017/blog-app';
 mongoose.connect(mongoDB, {
   useMongoClient: true
 });
 mongoose.Promise = global.Promise;
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // view engine setup
@@ -46,7 +46,7 @@ app.use('/blog', blog);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  let err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
