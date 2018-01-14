@@ -1,0 +1,18 @@
+extends layout
+block content
+    div(class="content")
+        h1(class="title") Welcome to my Blog
+            each blog in blog_list
+                div(class="card")
+                    div(class="post")
+                        a(href=`${blog.url}`)
+                            h3(class="blog-title")  #{blog.title}
+                        if blog.category
+                            p(class="blog-category")  Category - #{blog.category}
+                        else
+                            p(class="blog-category")  Category - Undefined
+                        div(class="card-image")
+                            figure(class="image")
+                                img(src=`${blog.imageURL}`)
+                        p(class="blog-summary")   #{blog.post}
+                        a(class="button is-link", href=`${blog.url}`) Read More     

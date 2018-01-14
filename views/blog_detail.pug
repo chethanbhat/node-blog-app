@@ -1,0 +1,20 @@
+extends layout
+block content
+        div(class="content")
+            div(class="card")
+                div(class="post")
+                    h3(class="blog-title")  #{blog.title}
+                    if blog.category
+                        p(class="blog-category")  Category - #{blog.category}
+                    else
+                        p(class="blog-category")  Category - Undefined
+                    div(class="card-image")
+                        figure(class="image")
+                            img(src=`${blog.imageURL}`)
+                    p(class="blog-summary")   #{blog.post}
+                    p(class="blog-date") Posted: #{blog.pretty_date}
+                    div(class="field is-grouped")
+                        p(class="control")
+                            a(class="button is-warning", href=`${blog.url}/update`) Update
+                        p(class="control")
+                            a(class="button is-danger", href=`${blog.url}/delete`) Delete

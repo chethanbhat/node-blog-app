@@ -1,0 +1,30 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+a {
+  color: #00b7ff;
+}
+h1.title {
+  font-size: 3rem;
+  text-align: center;
+  margin: 5%;
+}
+.card {
+  margin: 5% auto;
+  padding: 5%;
+}
+.card h3 {
+  font-size: 2rem;
+  text-align: center;
+}
+.card p.blog-category {
+  text-align: center;
+  font-size: 1rem;
+  font-style: italic;
+}
+.card p.blog-summary {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 20px;
+}

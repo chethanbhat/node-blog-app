@@ -1,0 +1,55 @@
+extends layout
+block content
+    div(class="content")
+        div(class="card")
+            if blog
+                h3 Update #{blog.title}
+            else
+                h3 Create a blog post
+            form(action="", method="post")
+                div(class="field")
+                    label(class="label") Title
+                    div(class="control")
+                        input(
+                            class="input"
+                            type="text"
+                            placeholder="My Post Title"
+                            name="title"
+                            required="true"
+                            value=(undefined===blog ? '' : blog.title)
+                        )
+                div(class="field")
+                    label(class="label") Category
+                    div(class="control")
+                        input(
+                            class="input"
+                            type="text"
+                            placeholder="Javascript, UI/UX, Design, General"
+                            name="category"
+                            value=(undefined===blog ? '' : blog.category)
+                        )
+                div(class="field")
+                    label(class="label") Image URL
+                    div(class="control")
+                        input(
+                            class="input"
+                            type="text"
+                            placeholder="https://images.unsplash.com/photo-1495073613335-7af8e711f273?auto=format&fit=crop&w=750&q=80"
+                            name="imageURL"
+                            value=(undefined===blog ? '' : blog.imageURL)
+                        )
+                div(class="field")
+                    label(class="label") Post
+                    div(class="control")
+                        textarea(
+                            class="textarea"
+                            placeholder="Lorem ipsum...."
+                            name="post"
+                        )= undefined===blog ? '' : blog.post
+                div(class="field")
+                    div(class="control")
+                        button(class="button is-link") Submit
+                if errors
+                    ul
+                        for error in errors
+                            li!= error.msg                                           
