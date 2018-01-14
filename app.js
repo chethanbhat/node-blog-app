@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var stylus = require('stylus');
+const compression = require('compression');
+const helmet = require('helmet');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -12,9 +14,12 @@ const blog = require('./routes/blog');
 
 var app = express();
 
+app.use(compression()); // Compress all routes
+app.use(helmet());
+
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var mongoDB = 'mongodb://chethan:poke123@ds251807.mlab.com:51807/chethan-blog-dev';
+var mongoDB = process.env.MONGODB_URI || 'mongodb://chethan:poke123@ds251807.mlab.com:51807/chethan-blog-dev';
 mongoose.connect(mongoDB, {
   useMongoClient: true
 });
